@@ -6,6 +6,6 @@ Use Vercel for the frontend and one persistent Docker backend for Yjs and Socket
 2. Create a Render Blueprint from `render.yaml`, or deploy the root `Dockerfile` on another WebSocket-capable host. Set `SHAREDIT_PUBLIC_ORIGIN` to the exact Vercel production origin, without a trailing slash. Verify the backend's `/health` endpoint returns `{"status":"ok"}`.
 3. In Vercel, set `VITE_SHAREDIT_BACKEND_URL` to the HTTPS backend origin, without a trailing slash, and deploy. Open the production URL in two independent browser sessions and verify presence and shared editing in both directions.
 
-The AI tutor is optional. To enable it, add a same-origin Vercel rewrite from `/api/ai/:path*` to `https://<your-backend>/api/ai/:path*`. Set `AI_PUBLIC_ORIGIN` to the Vercel production origin and `AI_TRUST_PROXY=1` on the backend. Configure the tutor secrets on the backend only, and use persistent storage for the quota ledger before enabling the tutor publicly. See the README for the tutor's settings.
+The AI tutor is optional. `frontend/vercel.json` forwards `/api/ai/:path*` to the production Render backend. Update the destination if you deploy to a different backend. Set `AI_PUBLIC_ORIGIN` to the exact Vercel production origin and set `GROQ_API_KEY` only on the backend. Leave `AI_TRUST_PROXY` unset while the backend is directly reachable. Use persistent quota storage and access controls before opening tutor access to everyone. See the README for details.
 
 Display names are not authentication. Anyone allowed to reach the app can join the shared document.
