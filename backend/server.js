@@ -14,7 +14,7 @@ const server = createServer(app)
 const io = new Server(server, {
   allowRequest(req, done) {
     const { origin, host } = req.headers
-    done(null, !origin || origin === `http://${host}` || origin === `https://${host}`)
+    done(null, !origin || origin === `http://${host}` || origin === `https://${host}` || origin === process.env.SHAREDIT_PUBLIC_ORIGIN)
   },
 })
 

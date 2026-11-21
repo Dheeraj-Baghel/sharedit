@@ -6,6 +6,7 @@ import { createRoot } from 'react-dom/client'
 import { MonacoBinding } from 'y-monaco'
 import { SocketIOProvider } from 'y-socket.io'
 import { Doc } from 'yjs'
+import { socketOrigin } from './socket-origin'
 import { CodeTerminal } from './CodeTerminal'
 import type { RunSnapshot } from './CodeTerminal'
 import { AiTutor } from './AiTutor'
@@ -50,7 +51,7 @@ function SharedEditor({ name }: { name: string }) {
     const model = codeEditor?.getModel()
     if (!codeEditor || !model) return
     const doc = new Doc()
-    const provider = new SocketIOProvider(window.location.origin, 'sharedit', doc, {
+    const provider = new SocketIOProvider(socketOrigin, 'sharedit', doc, {
       autoConnect: false, disableBc: true,
     })
     const text = doc.getText('code')

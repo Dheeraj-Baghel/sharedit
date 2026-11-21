@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: sharedit-backend
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: SHAREDIT_PUBLIC_ORIGIN
+        sync: false

@@ -1,6 +1,7 @@
 import { useEffect, useId, useState } from 'react'
 import type { FormEvent } from 'react'
 import { io } from 'socket.io-client'
+import { socketOrigin } from './socket-origin'
 
 const NAME_KEY = 'sharedit.displayName'
 const MAX_NAME_LENGTH = 48
@@ -100,7 +101,7 @@ export function UsersPanel({ name, onNameChange, expanded, onToggle }: {
   const [connected, setConnected] = useState(false)
 
   useEffect(() => {
-    const socket = io('/presence', { auth: { name, clientId }, transports: ['websocket'] })
+    const socket = io(`${socketOrigin}/presence`, { auth: { name, clientId }, transports: ['websocket'] })
     const clear = () => setConnected(false)
     socket.on('presence:users', (people: OnlineUser[]) => {
       setUsers(people.map(person => ({ ...person, online: person.online ?? true })))

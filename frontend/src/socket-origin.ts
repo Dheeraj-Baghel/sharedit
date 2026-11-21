@@ -1,0 +1,1 @@
+export const socketOrigin = import.meta.env.VITE_SHAREDIT_BACKEND_URL || window.location.origin
