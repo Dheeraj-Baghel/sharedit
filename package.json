@@ -1,0 +1,9 @@
+{
+  "name": "sharedit",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix frontend run build",
+    "test": "node --test backend/*.test.js frontend/tests/*.test.mjs",
+    "start": "npm run build && node backend/server.js"
+  }
+}

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+*.local
+/frontend/public/runtimes/
+.env
+.env.*
+!.env.example
+/backend/data/

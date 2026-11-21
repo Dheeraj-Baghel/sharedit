@@ -1,0 +1,42 @@
+{
+  "name": "sharedit",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "predev": "node scripts/prepare-runtimes.mjs",
+    "dev": "vite",
+    "prebuild": "node scripts/prepare-runtimes.mjs",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8"
+  },
+  "dependencies": {
+    "@bjorn3/browser_wasi_shim": "^0.4.2",
+    "@jitl/quickjs-wasmfile-release-sync": "^0.32.0",
+    "@live-codes/clang-wasm": "^0.3.0",
+    "@monaco-editor/react": "^4.7.0",
+    "fflate": "^0.8.3",
+    "monaco-editor": "^0.57.0",
+    "quickjs-emscripten-core": "^0.32.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "socket.io-client": "^4.8.4",
+    "sucrase": "^3.35.1",
+    "y-monaco": "^0.1.6",
+    "y-socket.io": "^1.1.3",
+    "yjs": "^13.6.33"
+  },
+  "overrides": {
+    "monaco-editor": {
+      "dompurify": "3.4.18"
+    }
+  }
+}
